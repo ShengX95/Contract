@@ -35,10 +35,11 @@ public class LoginController {
 		String captcha = request.getParameter("captcha");
 		String captcha2 = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
 		LoginStatus status = new LoginStatus();
-		if(!captcha.equals(captcha2)){
-			status.errorCaptcha();
-			return status;
-		}
+		//验证码
+//		if(!captcha.equals(captcha2)){
+//			status.errorCaptcha();
+//			return status;
+//		}
 		User user = userService.getUserByIdAndPsd(id, password);
 		logger.info(user);
 		

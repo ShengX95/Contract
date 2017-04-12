@@ -1,5 +1,9 @@
 package com.sx.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sx.entity.User;
 
 public interface IUserDao {
@@ -9,8 +13,13 @@ public interface IUserDao {
 
 	public void updateUser(User user);
 
-	public void deleteUser(String UserId);
+	public int deleteUser(String UserId);
 	
 	public User getUserById(String id);
 	
+	public List<User> getAll();
+	
+	public List<User> getUserByPage(@Param("start")int start,@Param("end")int end);
+	
+	public int count();
 }

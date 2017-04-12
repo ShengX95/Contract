@@ -3,10 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="/css/page/login.css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/icon.css" />
+<link rel="stylesheet" href="/css/easyui.css" />
 <script type="text/javascript" src="/js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
-<link rel="stylesheet" href="/css/easyui.css" />
-<link rel="stylesheet" href="/css/icon.css" />
 <script type="text/javascript">
 	document.onkeydown = function(e) {
 		var event = e || window.event;
@@ -21,7 +23,8 @@
 	function cleardata() {
 		$('#loginForm').form('clear');
 		$('#showMsg').html('');
-		$('#captcha').attr('src','/captcha.jpg?' + Math.floor(Math.random() * 100));
+		$('#captcha').attr('src',
+				'/captcha.jpg?' + Math.floor(Math.random() * 100));
 	}
 	function login() {
 		if ($("input[name='username']").val() == ""
@@ -46,40 +49,52 @@
 			});
 		}
 	}
-	function changeCaptcha(){
-		$('#captcha').attr('src','/captcha.jpg?' + Math.floor(Math.random() * 100));
+	function changeCaptcha() {
+		$('#captcha').attr('src',
+				'/captcha.jpg?' + Math.floor(Math.random() * 100));
 	}
 </script>
 <title>登录页面</title>
 </head>
 <body>
-	<div class="easyui-panel" title="登录框" style="width: 400px">
-		<div style="padding: 10px 30px 20px 30px">
-			<form id="loginForm" method="post">
-				<table cellpadding="5">
-					<tr>
-						<td>用户名:</td>
-						<td><input class="easyui-textbox" type="text" name="username"
-							data-options="required:true"></input></td>
-					</tr>
-					<tr>
-						<td>密码:</td>
-						<td><input class="easyui-textbox" type="password"
-							name="password" data-options="required:true"></input></td>
-					</tr>
-					<tr>
-						<td>验证码:</td>
-						<td><input class="easyui-textbox" type="text" name="captcha"
-							data-options="required:true" /><img id="captcha" src="/captcha.jpg" onclick="changeCaptcha()"/></td>
-					</tr>
-				</table>
-			</form>
-			<div id="showMsg" style="text-align: center; color: red;"></div>
-			<div style="text-align: center; padding: 5px">
-				<a href="javascript:void(0)" class="easyui-linkbutton"
-					onclick="login()">登录</a> <a href="javascript:void(0)"
-					class="easyui-linkbutton" onclick="cleardata()">重置</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div id="panel-wapper">
+					<div class="easyui-panel" title="登录框">
+						<div id="form-wapper">
+							<form id="loginForm" method="post">
+								<table cellpadding="5">
+									<tr>
+										<td>用户名:</td>
+										<td><input class="easyui-textbox" type="text"
+											name="username" data-options="required:true" value="shengx"></input></td>
+									</tr>
+									<tr>
+										<td>密码:</td>
+										<td><input class="easyui-textbox" type="password"
+											name="password" data-options="required:true" value="123456"></input></td>
+									</tr>
+									<tr>
+										<td>验证码:</td>
+										<td><input class="easyui-textbox" type="text"
+											name="captcha" data-options="required:true" /><img
+											id="captcha" src="/captcha.jpg" onclick="changeCaptcha()" /></td>
+									</tr>
+								</table>
+							</form>
+							<div id="showMsg"></div>
+							<div id="botton-wapper">
+								<a href="javascript:void(0)" class="easyui-linkbutton"
+									onclick="login()">登录</a> <a href="javascript:void(0)"
+									class="easyui-linkbutton" onclick="cleardata()">重置</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 </body>

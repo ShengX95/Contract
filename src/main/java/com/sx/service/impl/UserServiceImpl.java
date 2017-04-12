@@ -1,5 +1,7 @@
 package com.sx.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +20,25 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User getUserByIdAndPsd(String id, String password) {
 		return userdao.getUser(new User(id, "", password));
+	}
+	@Override
+	public List<User> getAllUser() {
+		return userdao.getAll();
+	}
+	
+	@Override
+	public List<User> getUserByPage(int page, int rows) {
+		int start = (page-1)*rows;
+		int end = start + rows;
+		return userdao.getUserByPage(start, end);
+	}
+	
+	@Override
+	public int getCount() {
+		return userdao.count();
+	}
+	@Override
+	public int delUser(String id) {
+		return userdao.deleteUser(id);
 	}
 }

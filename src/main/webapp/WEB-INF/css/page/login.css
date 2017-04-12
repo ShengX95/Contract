@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+#panel-wapper{
+	width: 400px;
+}
+#form-wapper{
+	padding: 10px 30px 20px 30px;
+}
+#showMsg{
+	text-align: center; color: red;
+}
+#botton-wapper{
+	text-align: center; padding: 5px;
+}
+#captcha:HOVER{
+	cursor: pointer;
+}
